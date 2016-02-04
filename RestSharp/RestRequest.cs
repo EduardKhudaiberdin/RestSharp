@@ -27,6 +27,9 @@ using RestSharp.Serializers;
 
 #if FRAMEWORK
 using RestSharp.Extensions;
+#if NET45
+using System.Net.Security;
+#endif
 #endif
 
 namespace RestSharp
@@ -57,6 +60,13 @@ namespace RestSharp
         /// Set this to write response to Stream rather than reading into memory.
         /// </summary>
         public Action<Stream> ResponseWriter { get; set; }
+
+#if NET45
+        /// <summary>
+        /// Gets or sets a callback function to validate the server certificate.
+        /// </summary>
+        public RemoteCertificateValidationCallback ServerCertificateValidationCallback { get; set; }
+#endif
 
         /// <summary>
         /// Determine whether or not the "default credentials" (e.g. the user account under which the current process is running)

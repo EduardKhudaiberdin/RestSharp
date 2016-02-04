@@ -22,6 +22,10 @@ using System.IO;
 using System.Net;
 using RestSharp.Serializers;
 
+#if NET45
+using System.Net.Security;
+#endif
+
 namespace RestSharp
 {
     public interface IRestRequest
@@ -47,7 +51,10 @@ namespace RestSharp
         /// Set this to write response to Stream rather than reading into memory.
         /// </summary>
         Action<Stream> ResponseWriter { get; set; }
-
+        
+#if NET45
+        RemoteCertificateValidationCallback ServerCertificateValidationCallback { get; set; }
+#endif
         /// <summary>
         /// Container of all HTTP parameters to be passed with the request. 
         /// See AddParameter() for explanation of the types of parameters that can be passed

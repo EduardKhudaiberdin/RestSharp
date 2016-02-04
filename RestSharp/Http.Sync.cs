@@ -303,6 +303,13 @@ namespace RestSharp
             {
                 webRequest.CachePolicy = this.CachePolicy;
             }
+
+#if NET45
+            if (this.ServerCertificateValidationCallback != null)
+            {
+                webRequest.ServerCertificateValidationCallback = this.ServerCertificateValidationCallback;
+            }
+#endif
 #endif
 
             webRequest.AllowAutoRedirect = this.FollowRedirects;

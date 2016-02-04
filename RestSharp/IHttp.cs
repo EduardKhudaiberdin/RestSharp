@@ -25,6 +25,9 @@ using System.Text;
 #if FRAMEWORK
 using System.Net.Cache;
 using System.Security.Cryptography.X509Certificates;
+#if NET45
+using System.Net.Security;
+#endif
 #endif
 
 namespace RestSharp
@@ -129,6 +132,10 @@ namespace RestSharp
         HttpResponse AsGet(string httpMethod);
 
         IWebProxy Proxy { get; set; }
+
+#if NET45
+        RemoteCertificateValidationCallback ServerCertificateValidationCallback { get; set; }
+#endif
 #endif
     }
 }

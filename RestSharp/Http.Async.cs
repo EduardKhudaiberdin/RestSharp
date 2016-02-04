@@ -477,6 +477,13 @@ namespace RestSharp
                 webRequest.CachePolicy = this.CachePolicy;
             }
 
+#if NET45
+            if (this.ServerCertificateValidationCallback != null)
+            {
+                webRequest.ServerCertificateValidationCallback = this.ServerCertificateValidationCallback;
+            }
+#endif
+
             if (this.FollowRedirects && this.MaxRedirects.HasValue)
             {
                 webRequest.MaximumAutomaticRedirections = this.MaxRedirects.Value;

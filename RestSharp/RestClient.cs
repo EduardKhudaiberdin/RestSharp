@@ -448,6 +448,10 @@ namespace RestSharp
 
             http.MaxRedirects = this.MaxRedirects;
             http.CachePolicy = this.CachePolicy;
+
+#if NET45
+            http.ServerCertificateValidationCallback = request.ServerCertificateValidationCallback;
+#endif
 #endif
 
             if (request.Credentials != null)
