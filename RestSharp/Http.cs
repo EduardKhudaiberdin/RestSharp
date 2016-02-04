@@ -326,11 +326,11 @@ namespace RestSharp
             {
 #if FRAMEWORK
                 Cookie cookie = new Cookie
-                {
-                    Name = httpCookie.Name,
-                    Value = httpCookie.Value,
-                    Domain = webRequest.RequestUri.Host
-                };
+                                {
+                                    Name = httpCookie.Name,
+                                    Value = httpCookie.Value,
+                                    Domain = webRequest.RequestUri.Host
+                                };
 
                 webRequest.CookieContainer.Add(cookie);
 #else
@@ -445,22 +445,22 @@ namespace RestSharp
                     foreach (Cookie cookie in webResponse.Cookies)
                     {
                         response.Cookies.Add(new HttpCookie
-                        {
-                            Comment = cookie.Comment,
-                            CommentUri = cookie.CommentUri,
-                            Discard = cookie.Discard,
-                            Domain = cookie.Domain,
-                            Expired = cookie.Expired,
-                            Expires = cookie.Expires,
-                            HttpOnly = cookie.HttpOnly,
-                            Name = cookie.Name,
-                            Path = cookie.Path,
-                            Port = cookie.Port,
-                            Secure = cookie.Secure,
-                            TimeStamp = cookie.TimeStamp,
-                            Value = cookie.Value,
-                            Version = cookie.Version
-                        });
+                                            {
+                                                Comment = cookie.Comment,
+                                                CommentUri = cookie.CommentUri,
+                                                Discard = cookie.Discard,
+                                                Domain = cookie.Domain,
+                                                Expired = cookie.Expired,
+                                                Expires = cookie.Expires,
+                                                HttpOnly = cookie.HttpOnly,
+                                                Name = cookie.Name,
+                                                Path = cookie.Path,
+                                                Port = cookie.Port,
+                                                Secure = cookie.Secure,
+                                                TimeStamp = cookie.TimeStamp,
+                                                Value = cookie.Value,
+                                                Version = cookie.Version
+                                            });
                     }
                 }
 
@@ -469,10 +469,10 @@ namespace RestSharp
                     string headerValue = webResponse.Headers[headerName];
 
                     response.Headers.Add(new HttpHeader
-                    {
-                        Name = headerName,
-                        Value = headerValue
-                    });
+                                        {
+                                            Name = headerName,
+                                            Value = headerValue
+                                        });
                 }
 
                 webResponse.Close();
